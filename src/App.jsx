@@ -1,17 +1,9 @@
 import { useState } from "react";
-<<<<<<< HEAD
 import Card from './Components/Card.jsx';
 import ItemCard from './Components/ItemCard.jsx';
 import Humanos from './Dados/Humanos.jsx';
 import Mutantes from './Dados/Mutantes.jsx';
 import Itens from "./Dados/Itens.jsx";
-=======
-import Card from './Componets/Card.jsx';
-import ItemCard from './Componets/ItemCard.jsx';
-import Humanos from './Componets/Humanos.jsx';
-import Mutantes from './Componets/Mutantes.jsx';
-import Itens from "./Componets/Itens.jsx";
->>>>>>> 8ce195cc44e5880c22ab299d11331d43a2fd9686
 
 const categorias = ["Humanos", "Mutantes", "Itens"];
 const dados = [...Humanos, ...Mutantes, ...Itens];
@@ -24,8 +16,8 @@ function App() {
   );
 
   return (
-   <div className="min-h-screen bg-gradient-to-b from-green-900 via-green-800 to-green-700 relative">
-  <div className="absolute inset-0 bg-green-950/30"></div>
+    <div className="min-h-screen bg-gradient-to-b from-green-900 via-green-800 to-green-700 relative">
+      <div className="absolute inset-0 bg-green-950/30"></div>
 
       <div className="relative z-10">
         <h1 className="text-4xl font-bold text-center py-6 text-yellow-100 drop-shadow-lg">
