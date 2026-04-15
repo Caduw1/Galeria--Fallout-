@@ -1,9 +1,17 @@
 import { useState } from "react";
+<<<<<<< HEAD
 import Card from './Components/Card.jsx';
 import ItemCard from './Components/ItemCard.jsx';
 import Humanos from './Dados/Humanos.jsx';
 import Mutantes from './Dados/Mutantes.jsx';
 import Itens from "./Dados/Itens.jsx";
+=======
+import Card from './Componets/Card.jsx';
+import ItemCard from './Componets/ItemCard.jsx';
+import Humanos from './Componets/Humanos.jsx';
+import Mutantes from './Componets/Mutantes.jsx';
+import Itens from "./Componets/Itens.jsx";
+>>>>>>> 8ce195cc44e5880c22ab299d11331d43a2fd9686
 
 const categorias = ["Humanos", "Mutantes", "Itens"];
 const dados = [...Humanos, ...Mutantes, ...Itens];
