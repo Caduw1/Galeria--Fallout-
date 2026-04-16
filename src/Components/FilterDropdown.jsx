@@ -7,52 +7,64 @@ function FilterDropdown({
   selectAll,
   textoFiltro
 }) {
-  const [dropdownAberto, setDropdownAberto] = useState(false);
+  const [aberto, setAberto] = useState(false);
   const dropdownRef = useRef(null);
 
-  const toggleDropdown = () => setDropdownAberto(!dropdownAberto);
+  // abre ou fecha o dropdown
+  const alternarDropdown = () => setAberto((prev) => !prev);
 
+  // fecha o dropdown ao clicar fora dele
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const fecharAoClicarFora = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setDropdownAberto(false);
+        setAberto(false);
       }
     };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+
+    document.addEventListener("mousedown", fecharAoClicarFora);
+    return () => document.removeEventListener("mousedown", fecharAoClicarFora);
   }, []);
 
   return (
     <div className="flex justify-center mb-8" ref={dropdownRef}>
       <div className="relative w-64">
 
+        {/* botão principal do filtro */}
         <button
-          onClick={toggleDropdown}
-          className="w-full px-4 py-3 bg-yellow-800 text-yellow-100 rounded-lg flex justify-between"
+          onClick={alternarDropdown}
+          className="w-full px-4 py-3 bg-yellow-800 text-yellow-100 rounded-lg flex justify-between items-center"
         >
-          {textoFiltro} ▼
+          <span>{textoFiltro}</span>
+          <span>▼</span>
         </button>
 
-        {dropdownAberto && (
-          <div className="absolute mt-2 w-full bg-gray-900 border border-yellow-600 rounded-lg shadow-lg">
+        {/* conteúdo do dropdown */}
+        {aberto && (
+          <div className="absolute mt-2 w-full bg-gray-900 border border-yellow-600 rounded-lg shadow-lg overflow-hidden">
 
+            {/* botão para selecionar todas as categorias */}
             <button
               onClick={selectAll}
               className="w-full text-left px-4 py-2 text-green-400 hover:bg-green-900"
             >
-              Todos
+              selecionar todos
             </button>
 
-            {categoriasDisponiveis.map((cat) => (
-              <label key={cat} className="flex gap-2 px-4 py-2 text-gray-200 hover:bg-green-900">
-                <input
-                  type="checkbox"
-                  checked={categoriasSelecionadas.includes(cat)}
-                  onChange={() => toggleCategoria(cat)}
-                />
-                {cat}
-              </label>
-            ))}
+            {/* lista de categorias */}
+            <ul>
+              {categoriasDisponiveis.map((categoria) => (
+                <li key={categoria}>
+                  <label className="flex items-center gap-2 px-4 py-2 text-gray-200 hover:bg-green-900 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={categoriasSelecionadas.includes(categoria)}
+                      onChange={() => toggleCategoria(categoria)}
+                    />
+                    {categoria}
+                  </label>
+                </li>
+              ))}
+            </ul>
 
           </div>
         )}
