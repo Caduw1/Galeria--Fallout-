@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 function Card({ nome, vida, categoria, descricao, imagem }) {
+=======
+function Card({ nome, vida, categoria, descricao, imagem, destaque }) {
+>>>>>>> e0692b4 (react aula)
   return (
     <div className="w-[220px] p-4 rounded-lg bg-gray-900 text-gray-200 border border-gray-600 flex flex-col items-center gap-2 hover:scale-105 transition">
 
@@ -17,6 +21,13 @@ function Card({ nome, vida, categoria, descricao, imagem }) {
       {vida && (
         <p className="font-bold">HP: {vida}</p>
       )}
+<<<<<<< HEAD
+=======
+      <p> 
+         <button>Destaque</button>
+         {destaque}
+      </p>
+>>>>>>> e0692b4 (react aula)
 
     </div>
   );
